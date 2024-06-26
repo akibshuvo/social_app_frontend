@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --main_bg: #eeeeee;
+    --page_color: #f7f7fb;
+    --input_color: #f0f2f5;
+    --line_color: #f0f2f5;
+    --black: #000000;
+    --black: #000000db;
+    --whit:#fff;
+    --button_color: #8ed1fc;
+    --buttons: #34d3d3;
+
+}
+
+/* --wp--preset--color--black: #000000;
+    --wp--preset--color--cyan-bluish-gray: #abb8c3;
+    --wp--preset--color--white: #ffffff;
+    --wp--preset--color--pale-pink: #f78da7;
+    --wp--preset--color--vivid-red: #cf2e2e;
+    --wp--preset--color--luminous-vivid-orange: #ff6900;
+    --wp--preset--color--luminous-vivid-amber: #fcb900;
+    --wp--preset--color--light-green-cyan: #7bdcb5;
+    --wp--preset--color--vivid-green-cyan: #00d084;
+    --wp--preset--color--pale-cyan-blue: #8ed1fc;
+    --wp--preset--color--vivid-cyan-blue: #0693e3;
+    --wp--preset--color--vivid-purple: #9b51e0; */
+
+
+
+@font-face {
+    font-family: "girloy_bold";
+    src: url("./assets//fonts/Gilroy-Bold.ttf");
+}
+@font-face {
+    font-family: "gilroy_extraBold";
+    src: url("./assets//fonts/Gilroy-ExtraBold.ttf");
+}
+@font-face {
+    font-family: "girloy_light";
+    src: url("./assets//fonts/Gilroy-Light.ttf");
+}
+@font-face {
+    font-family: "girloy_medium";
+    src: url("./assets//fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+    font-family: "girloy_regular";
+    src: url("./assets//fonts/Gilroy-Regular.ttf");
+}
+@font-face {
+    font-family: "girloy_semiBold";
+    src: url("./assets//fonts/Gilroy-SemiBold.ttf");
+}

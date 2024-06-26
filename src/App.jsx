@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Registations from "./pages/registations";
+import Login from "./pages/loging/Login";
 
 
 
@@ -14,6 +15,7 @@ function App() {
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<Registations />} ></Route>
+        <Route path="/login" element={<Login />} ></Route>
           
       </Route>
     )
