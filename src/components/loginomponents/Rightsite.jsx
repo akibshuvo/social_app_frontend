@@ -3,7 +3,10 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import { FaTwitterSquare  } from "react-icons/fa";
 import { FaGooglePlus } from "react-icons/fa";
 
+
 const Rightsite = () => {
+
+
   return (
     <div>
         <h1 className='font-girloy_bold text-4xl py-7'>Sign in</h1>

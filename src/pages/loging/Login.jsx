@@ -4,7 +4,7 @@ import Rightsite from '../../components/loginomponents/Rightsite'
 
 const Login = () => {
   return (
-    <div class='w-full h-screen bg-main_bg flex justify-center items-center'>
+    <div className='w-full h-screen bg-main_bg flex justify-center items-center'>
       <div className='w-[55%] bg-whit rounded-2xl flex py-10 box-border'>
 
       <div className='w-[50%] px-24  text-center'>
