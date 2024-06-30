@@ -7,6 +7,9 @@ import {useLogedInMutation} from '../../features/api/authApi'
 import { toast, ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {signIn} from '../../validations'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logedUser } from '../../features/userslice/authSlice';
 
 const initialState = {
   email: "",
@@ -17,13 +20,37 @@ const initialState = {
 const Rightsite = () => {
   const[logedIn, {loading}] = useLogedInMutation()
 
+  let navigate = useNavigate()
+  let dispatch = useDispatch()
+
  const logIn = async ()=>{
   const logInData = await logedIn({
     email: formik.values.email,
     password: formik.values.password,
   })
 
-  console.log(logInData)
+  if(logInData.error){
+    toast.error(logInData.error.data.massage, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }else{
+    const {message, ...rest} = logInData.data
+
+    dispatch(logedUser(rest))
+    localStorage.setItem("user", JSON.stringify(rest))
+
+    navigate("/home")
+    
+  }
+  
 
  }
 

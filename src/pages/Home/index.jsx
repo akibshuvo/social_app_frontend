@@ -1,8 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 
 const index = () => {
+  const {userInfo}  = useSelector(state => state.regitration)
+  console.log(userInfo)
+  
   return (
-    <div>home</div>
+    <>
+    <h1>akib</h1>
+    
+    </>
+    
   )
 }
 
