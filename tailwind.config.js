@@ -13,6 +13,7 @@ export default {
       whit: "var(--whit)",
       button_color: "var(--button_color)",
       buttons: "var(--buttons)",
+      errorColor: "var(--errorColor)",
     },
 
     fontFamily:{

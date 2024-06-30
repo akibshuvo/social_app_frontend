@@ -1,6 +1,14 @@
 import React from 'react'
 import { useFormik } from 'formik';
 import {signUp} from "../../validations"
+import Gender from './Gender';
+import DateOfBirth from './DateOfBirth';
+import FormInput from './FormInput';
+import  { useAddUserMutation }  from '../../features/api/authApi';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const initialState = {
   fName: "",
@@ -8,153 +16,98 @@ const initialState = {
   email: "",
   password: "",
   username: "",
-  bDay: "",
-  bMonth: "",
-  bYear: "",
   gender: "",
+  bDay: new Date().getDate(),
+  bMonth: new Date().getMonth()+1,
+  bYear: new Date().getFullYear(),
 }
 
 const LeftSite = () => {
-  
+  const [addUser  , { isLoading }] = useAddUserMutation();
+  let navigate = useNavigate()
+
+  const registrations = async ()=>{
+    const signUpMutation = await addUser({
+      fName: formik.values.fName,
+      lName: formik.values.lName,
+      email: formik.values.email,
+      username: formik.values.username,
+      password: formik.values.password,
+      gender: formik.values.gender,
+      bDay: formik.values.bDay,
+      bMonth: formik.values.bMonth,
+      bYear: formik.values.bYear
+    });
+
+  if(signUpMutation.error){
+    toast.error(signUpMutation.error.data.massege, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+    console.log(signUpMutation.error.data.massege,"eee")
+  }else{
+    toast.success("Registrations Successfull", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+
+      navigate("/login")
+  }
+   
+  };
+
   const formik = useFormik({
     initialValues: initialState,
     validationSchema:signUp,
 
-    onSubmit:()=>{
-    console.log("akibdsFormik") 
-    }
+      onSubmit: ()=>{
+      console.log("akibdsFormik")  
+      registrations();
+      }
   })
+  
 
-  console.log(formik,"aaaa")
 
+  const tempYears = new Date().getFullYear();
+  const years = Array.from(new Array(105), (val,index)=> tempYears - index)
+  const month = Array.from(new Array(12), (val,index)=> 1 + index)
+  const days = ()=>{
+    return new Date(formik.values.bYear,formik.values.bMonth,0).getDate()
+  }
+  const getDay = Array.from(new Array(days()), (val,index)=> 1 + index) 
 
+  const {errors, touched} = formik
+
+  
   return (
     <div>
       <h1 className='font-girloy_bold text-4xl mb-12'>Registration</h1>
-      <form onSubmit={formik.handleSubmit}>
 
-        <input 
-        className='border-b-[2px] w-full border-main_bg py-2 mb-6 outline-none font-girloy_medium' 
-        type="text" 
-        placeholder='Enter Your First Name' 
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='fName'
-        value={formik.values.fName}
-        />
+      <FormInput formik={formik} errors={errors} touched={touched}/>
 
-        <input 
-        className='border-b-[2px] w-full border-main_bg py-2 mb-6 outline-none font-girloy_medium' 
-        type="text" 
-        placeholder='Enter Your Last Name' 
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='lName'
-        value={formik.values.lName}
-        />
+      <Gender formik={formik} errors={errors} touched={touched}/>
+      <DateOfBirth formik={formik} errors={errors} touched={touched} getDay={getDay} month={month} years={years}/>
+     <div>
+      <button className='w-3/6 bg-buttons px-5 py-2 text-whit mt-12 font-girloy_bold rounded' onClick={formik.handleSubmit} type='submit'>Registration</button>
+    </div>
 
-        <input 
-        className='border-b-[2px] w-full border-main_bg py-2 mb-6 outline-none font-girloy_medium' 
-        type="text" 
-        placeholder='UserName' 
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='username'
-        value={formik.values.username}
-        />
-
-        <input 
-        className='border-b-[2px] w-full border-main_bg py-2 mb-6 outline-none font-girloy_medium' 
-        type="email" 
-        placeholder='www.example@mail.com' 
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='email'
-        value={formik.values.email}
-        />
-
-        <input 
-        className='border-b-[2px] w-full border-main_bg py-2 mb-6 outline-none font-girloy_medium' 
-        type="password" 
-        placeholder='Password' 
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='password'
-        value={formik.values.password}
-        />
-        
-      </form>
-
-      <div className='flex gap-x-1 mt-3'>
-        <input 
-        name='gender' 
-        type="radio" 
-        id='male' 
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        value="male"
-        />
-        <label className='font-girloy_regular' for="male">Male</label>
-
-        <input 
-        name='gender' 
-        className='ml-3' 
-        type="radio" 
-        id='female'
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        value="femele"
-        />
-        <label className='font-girloy_regular' for="female">Female</label>
-
-      </div>
-
-      <div className='mt-7 flex gap-x-5'>  
-        <select
-         className='border-2 px-2 py-[2px] border-main_bg font-girloy_regular'
-         onChange={formik.handleChange}
-         autoComplete='off'
-         onBlur={formik.handleBlur}
-         name='bDay'
-         value={formik.values.bDay}
-         >
-          <option>Day</option>
-        </select>
-
-        <select 
-        className='border-2 px-2 py-[2px] border-main_bg'
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='bMonth'
-        value={formik.values.bMonth}
-        >
-          <option>Month</option>
-        </select>
-
-        <select 
-        className='border-2 px-2 py-[2px] border-main_bg'
-        onChange={formik.handleChange}
-        autoComplete='off'
-        onBlur={formik.handleBlur}
-        name='bYear'
-        value={formik.values.bYear}
-        >
-
-          <option>Years</option>
-        </select>
-      </div>
-
-      <button className='w-3/6 bg-buttons px-5 py-2 text-whit mt-12 font-girloy_bold rounded' onClick={formik.handleSubmit}>Registration</button>
     </div>
   )
 }
+
 
 export default LeftSite
