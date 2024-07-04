@@ -1,14 +1,26 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import LeftSide from '../../components/homeComponents/leftSide/index'
+import NavberSite from '../../components/homeComponents/navber'
+
 
 
 const index = () => {
-  const {userInfo}  = useSelector(state => state.regitration)
-  console.log(userInfo)
   
   return (
     <>
-    <h1>akib</h1>
+    <div> 
+      <div><NavberSite/></div>
+      <div className='px-60 w-full h-screen flex justify-between bg-main_bg'>
+        <div className='mt-8'>
+        <LeftSide/>
+        </div>
+        <div className='mt-8'>akib</div>
+        <div className='mt-8'>akib</div>
+      </div>
+  
+    
+   </div>
+ 
     
     </>
     

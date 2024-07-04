@@ -14,6 +14,9 @@ export default {
       button_color: "var(--button_color)",
       buttons: "var(--buttons)",
       errorColor: "var(--errorColor)",
+      blackss: "var(--blackss)",
+      textColor: "var(--textColor)",
+      nav: "var(--nav)",
     },
 
     fontFamily:{
