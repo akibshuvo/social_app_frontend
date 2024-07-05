@@ -17,6 +17,7 @@ export default {
       blackss: "var(--blackss)",
       textColor: "var(--textColor)",
       nav: "var(--nav)",
+      bbbbb: "var(--bbbbb)",
     },
 
     fontFamily:{

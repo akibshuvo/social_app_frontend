@@ -1,6 +1,4 @@
 import React from 'react'
-import ProfileSide from './ProfileSide'
-import LeftData from './LeftData'
 import Following from './Following'
 import Blogs from './Blogs'
 
@@ -10,8 +8,6 @@ const index = () => {
 
     <Following/>
     <Blogs/>
-        {/* <ProfileSide/>
-        <LeftData/> */}
            </>
   )
 }

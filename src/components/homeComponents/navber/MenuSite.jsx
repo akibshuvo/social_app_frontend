@@ -8,6 +8,7 @@ import { PiTiktokLogo } from "react-icons/pi";
 import { IoIosSearch } from "react-icons/io";
 import SearchBox from './SearchBox';
 import OutSideClick from '../../../functions/click'
+import { Link, NavLink } from 'react-router-dom';
 
 const MenuSite = () => {
   let [searchBox, setSearchBox] = useState(false)
@@ -20,14 +21,36 @@ const MenuSite = () => {
 
 
   return (
-    <div className='flex gap-x-16 px-12 justify-between items-center'>
+    <div className='flex gap-x-16 pl-12 justify-between items-center'>
 
-    <div className='flex justify-between text-xl w-[40%] '> 
-        <div className='cursor-pointer'><MdOutlinePermMedia/></div>
-        <div className='cursor-pointer '><MdOutlinePeopleOutline/></div>
-        <div className='cursor-pointer '><BiMessageDots/></div>
+    <div className='flex justify-between w-[40%] gap-x-8 text-page_color'> 
+
+      <NavLink to="/home">
+        <div className='cursor-pointer flex items-center gap-x-2'>
+          <MdOutlinePermMedia className='text-2xl'/>
+          <p className='font-bold hover:border-b'>Home</p>
+          </div>
+          </NavLink>
+
+          <NavLink to="/messages">
+          <div className='cursor-pointer flex items-center gap-x-2'>
+          <BiMessageDots className='text-2xl'/>
+          <p className='font-bold active:border-b hover:border-b'>Messages</p>
+          </div>
+          </NavLink>
+
+       <NavLink to="/friends"> 
+       <div className='cursor-pointer flex items-center gap-x-2'>
+          <MdOutlinePeopleOutline className='text-2xl'/>
+          <p className='font-bold hover:border-b'>Friends</p>
+        </div>
+        </NavLink>
+        
         {/* <div className='cursor-pointer'><FaInstagram/></div> */}
-        <div className='cursor-pointer'><LuNewspaper/></div>
+        {/* <div className='cursor-pointer flex items-center gap-x-2'>
+          <LuNewspaper className='text-xl'/>
+          <p className='font-medium hover:border-b'>News </p>
+          </div> */}
 
     </div>
 

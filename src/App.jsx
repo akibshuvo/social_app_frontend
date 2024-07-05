@@ -11,6 +11,9 @@ import Home from "./pages/Home";
 import { ToastContainer } from 'react-toastify';
 import LogedInUser from "./components/privateRoutes/LogedInUser";
 import NoLoginUSer from "./components/privateRoutes/NoLoginUSer";
+import RootLayout from "./components/RootLayout";
+import Messages from "./pages/messages";
+import Friends from "./pages/friend.jsx";
 
 
 
@@ -26,7 +29,12 @@ function App() {
         </Route>
 
       <Route element={<LogedInUser/>}>
+      <Route element={<RootLayout/>}>
         <Route path="/home" element={<Home />} ></Route>
+        <Route path="/messages" element={<Messages />} ></Route>
+        <Route path="/friends" element={<Friends />} ></Route>
+        
+        </Route>
       </Route>
           
       </Route>
