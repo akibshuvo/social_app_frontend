@@ -1,6 +1,6 @@
 import React from 'react'
-import LeftSide from '../../components/homeComponents/leftSide/index'
-import NavberSite from '../../components/homeComponents/navber'
+import All from '../../components/homeComponents/MiddlePart'
+
 
 
 
@@ -9,7 +9,7 @@ const index = () => {
   return (
     <>
 
-    post
+    <All/>
 
     </>
     

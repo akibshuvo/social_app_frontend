@@ -14,7 +14,7 @@ import NoLoginUSer from "./components/privateRoutes/NoLoginUSer";
 import RootLayout from "./components/RootLayout";
 import Messages from "./pages/messages";
 import Friends from "./pages/friend.jsx";
-
+import 'swiper/css';
 
 
 

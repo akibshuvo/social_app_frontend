@@ -18,6 +18,9 @@ export default {
       textColor: "var(--textColor)",
       nav: "var(--nav)",
       bbbbb: "var(--bbbbb)",
+      bHover: "var(--bHover)",
+      deleteHover: "var(--deleteHover)",
+      blur: "var(--blur)",
     },
 
     fontFamily:{

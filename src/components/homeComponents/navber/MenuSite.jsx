@@ -21,7 +21,7 @@ const MenuSite = () => {
 
 
   return (
-    <div className='flex gap-x-16 pl-12 justify-between items-center'>
+    <div className='flex justify-between pr-12 items-center'>
 
     <div className='flex justify-between w-[40%] gap-x-8 text-page_color'> 
 
