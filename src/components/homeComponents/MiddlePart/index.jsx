@@ -7,9 +7,12 @@ import ShowPost from '../MiddlePart/showPost'
 const index = () => {
   return (
     <>
+   
     <StoryPart/>
     <PostBar/>
     <ShowPost/>
+    
+    
     </>
   )
 }

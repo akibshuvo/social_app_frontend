@@ -1,8 +1,18 @@
 import React from 'react'
 import { IoIosHelpCircle,IoMdSettings  } from "react-icons/io";
 import { BsPcDisplayHorizontal } from "react-icons/bs";
+import { useDispatch, useSelector } from 'react-redux';
+import { logInUser } from '../../../features/userslice/authSlice';
+
+
 
 const ProfileMenuSetting = () => {
+  let dispatch = useDispatch()
+
+  let handleLogOut = ()=>{
+     dispatch(logInUser(null))
+     localStorage.removeItem('user')
+  }
   return (
     <div className='text-black mt-5'>
 
@@ -19,7 +29,7 @@ const ProfileMenuSetting = () => {
             <h4 className='font-girloy_regular text-[17px]  text-textColor'>Help & support</h4>
         </div>
         
-        <button className='bg-nav w-full py-2 rounded-3xl text-whit mt-4 hover:bg-bHover'>Log Out</button>
+        <button onClick={handleLogOut} className='bg-nav w-full py-2 rounded-3xl text-whit mt-4 hover:bg-bHover'>Log Out</button>
     </div>
   )
 }

@@ -7,7 +7,7 @@ import {useLogedInMutation} from '../../features/api/authApi'
 import { toast, ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {signIn} from '../../validations'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logedUser } from '../../features/userslice/authSlice';
 
@@ -101,6 +101,7 @@ const Rightsite = () => {
 
             <button className='w-full bg-buttons px-5 py-2 text-whit mt-8 font-girloy_bold rounded ' onClick={formik.handleSubmit} type='submit'>Sign in</button>
 
+<Link to="/forget"><h2 className='flex justify-center mt-2 font-light text-textColor cursor-pointer'>Forget Password</h2></Link>
             <div className='flex mt-8 gap-x-8'>
                 <h1 className='font-girloy_medium text-blacks'>Or Login with</h1>
                 <div className='flex gap-x-5 text-2xl'>

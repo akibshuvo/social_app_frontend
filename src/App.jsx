@@ -14,6 +14,8 @@ import NoLoginUSer from "./components/privateRoutes/NoLoginUSer";
 import RootLayout from "./components/RootLayout";
 import Messages from "./pages/messages";
 import Friends from "./pages/friend.jsx";
+import Forget from "./pages/forget/Forget.jsx";
+import OtpPage from "./pages/otpPage/OtpPage.jsx";
 import 'swiper/css';
 
 
@@ -26,6 +28,8 @@ function App() {
         <Route element={<NoLoginUSer/>}>
         <Route path="/" element={<Registations />} ></Route>
         <Route path="/login" element={<Login />} ></Route>
+        <Route path="/forget" element={<Forget />} ></Route>
+        <Route path="/otp" element={<OtpPage />} ></Route>
         </Route>
 
       <Route element={<LogedInUser/>}>
