@@ -16,7 +16,11 @@ import Messages from "./pages/messages";
 import Friends from "./pages/friend.jsx";
 import Forget from "./pages/forget/Forget.jsx";
 import OtpPage from "./pages/otpPage/OtpPage.jsx";
+import BlogOne from "./pages/blogPages/BlogOne.jsx";
+import BlogTwo from "./pages/blogPages/BlogTwo.jsx";
+import NewPassword from "./pages/newPasswordPage/index.jsx";
 import 'swiper/css';
+import { Bars } from 'react-loader-spinner';
 
 
 
@@ -29,7 +33,8 @@ function App() {
         <Route path="/" element={<Registations />} ></Route>
         <Route path="/login" element={<Login />} ></Route>
         <Route path="/forget" element={<Forget />} ></Route>
-        <Route path="/otp" element={<OtpPage />} ></Route>
+        <Route path="/otpVarification/:email" element={<OtpPage />} ></Route>
+        <Route path="/newpassword/:token" element={<NewPassword />} ></Route>
         </Route>
 
       <Route element={<LogedInUser/>}>
@@ -37,6 +42,8 @@ function App() {
         <Route path="/home" element={<Home />} ></Route>
         <Route path="/messages" element={<Messages />} ></Route>
         <Route path="/friends" element={<Friends />} ></Route>
+        <Route path="/blog1" element={<BlogOne />} ></Route>
+        <Route path="/blog2" element={<BlogTwo />} ></Route>
         
         </Route>
       </Route>
@@ -50,6 +57,7 @@ function App() {
     <>
     <RouterProvider router={router}/>
     <ToastContainer/>
+   
     </>
   )
 }

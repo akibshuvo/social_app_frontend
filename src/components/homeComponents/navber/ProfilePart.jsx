@@ -1,16 +1,19 @@
 import React, { useState,useRef } from 'react'
 import { FaDisease } from "react-icons/fa";
 import man from '../../../allPictures/man.jpg'
-import b2 from '../../../allPictures/i2.jpeg'
+import b2 from '../../../allPictures/i3.jpeg'
 import { FaChevronDown } from "react-icons/fa";
 import ProfilesMenus from './ProfilesMenus';
 import OutSideClick from '../../../functions/click'
 import { IoMdNotificationsOutline } from "react-icons/io";
 import NotificationsBox from './NotificationsBox';
+import { useSelector } from 'react-redux'
 
 const ProfilePart = () => {
 let [profileMenu, setProfileMenu] = useState(false)
 let [notifications, setNotifications] = useState(false)
+
+let data = useSelector(state=>state.regitration.userInfo)
 
 let clickOutSide = useRef(null)
 let clickOutSidesN = useRef(null)
@@ -34,7 +37,7 @@ let clickOutSidesN = useRef(null)
     <div onClick={()=>setProfileMenu(true)} className='flex gap-x-4 items-center '>
 
         <div className='flex mt-2 items-center gap-x-2'>
-        <h4 className='font-bold '>Akib</h4>
+        <h4 className='font-bold '>{data.fName}</h4>
         <FaChevronDown/>
         </div>
 

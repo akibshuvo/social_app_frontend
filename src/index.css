@@ -10,6 +10,7 @@
     --black: #000000;
     --black: #000000db;
     --blackss: #00000034;
+    --blackz: #00000097;
     --blur:#ffffff9f;
     --whit:#fff;
     --button_color: #8ed1fc;
@@ -17,7 +18,7 @@
     /* --nav: #32af8e; */
     --nav: #218e98;
     /* --nav: #268dbc; */
-    /* --bHover: #268cbcc4; */
+    --bHover: #268cbcc4;
     --bHover: #218e98c3;
     --errorColor:#f03c3cca;
     --deleteHover:#f03c3c93;

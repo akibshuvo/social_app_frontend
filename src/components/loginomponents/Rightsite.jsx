@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaTwitterSquare  } from "react-icons/fa";
 import { FaGooglePlus } from "react-icons/fa";
@@ -10,6 +10,7 @@ import {signIn} from '../../validations'
 import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logedUser } from '../../features/userslice/authSlice';
+import { Bars } from 'react-loader-spinner';
 
 const initialState = {
   email: "",
@@ -19,6 +20,7 @@ const initialState = {
 
 const Rightsite = () => {
   const[logedIn, {loading}] = useLogedInMutation()
+  let [loader, setLoader] = useState(false)
 
   let navigate = useNavigate()
   let dispatch = useDispatch()
@@ -41,11 +43,13 @@ const Rightsite = () => {
       theme: "light",
       transition: Bounce,
       });
+      setLoader(false)
   }else{
     const {message, ...rest} = logInData.data
 
     dispatch(logedUser(rest))
     localStorage.setItem("user", JSON.stringify(rest))
+    setLoader(false)
 
     navigate("/home")
     
@@ -59,6 +63,7 @@ const Rightsite = () => {
     validationSchema:signIn,
       onSubmit: ()=>{
         logIn() 
+        setLoader(true)
       }
   })
 
@@ -99,7 +104,23 @@ const Rightsite = () => {
                 />
             </form>
 
-            <button className='w-full bg-buttons px-5 py-2 text-whit mt-8 font-girloy_bold rounded ' onClick={formik.handleSubmit} type='submit'>Sign in</button>
+
+{loader
+? <button className='w-full bg-buttons px-5 py-2 text-whit mt-8 font-girloy_bold rounded flex justify-center'>
+<Bars
+  height="22"
+  width="55"
+  color="#fff"
+  ariaLabel="bars-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
+</button>
+: <button className='w-full bg-buttons px-5 py-2 text-whit mt-8 font-girloy_bold rounded ' onClick={formik.handleSubmit} type='submit'>Sign in</button>
+            
+}
+            
 
 <Link to="/forget"><h2 className='flex justify-center mt-2 font-light text-textColor cursor-pointer'>Forget Password</h2></Link>
             <div className='flex mt-8 gap-x-8'>

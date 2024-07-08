@@ -21,6 +21,7 @@ export default {
       bHover: "var(--bHover)",
       deleteHover: "var(--deleteHover)",
       blur: "var(--blur)",
+      blackz: "var(--blackz)",
     },
 
     fontFamily:{
